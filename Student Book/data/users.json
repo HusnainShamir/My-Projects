@@ -1,0 +1,9 @@
+{
+  "ali": ["ali","1234","ali@email.com","student","CE"],
+  "husnain": ["husnain","2134","husnain@email.com","student","CS"],
+  "abdullah": ["abdullah","2314","abdullah@email.com","student","AI"],
+  "hamid": ["hamid","2341","hamid@email.com","student","EE"],
+
+  "audit1": ["audit1","9876","audit1@email.com","auditor","admin"],
+  "audit2": ["audit2","8976","audit2@email.com","auditor","admin"]
+}
