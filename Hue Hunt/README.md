@@ -54,7 +54,7 @@ Hue Hunt is a color-based puzzle game where players test their perception and re
 ## 📷 Screenshots
 
 ### Main Menu
-![Main Menu](ss/MainMenu.png)
+![Main Menu](Hue%nbspHunt/ss/MainMenu.png)
 
 ### Gameplay Screen
 ![Gameplay](ss/Level.png)
