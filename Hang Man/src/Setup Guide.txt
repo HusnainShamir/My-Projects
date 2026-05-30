@@ -1,0 +1,4 @@
+1. Firstly Install the Fonts in the fonts folder .
+2.Run Main.java to you local Code Editor or IDE.
+
+Note: Don't Delete anything from the assets folder.
