@@ -1,12 +1,14 @@
 import java.util.*;
 import java.io.*;
+
+//-------- Hafiz Abdullah -----------
 class Bank {
     private String name;
     private ArrayList<Client> clList;
     private ArrayList<Account> acList;
     private File_Handling acc_file = new File_Handling("accs_data.csv","ACC No, Amount, Holder Name");
     private File_Handling cln_file = new File_Handling("cln_data.csv","ID, Name, CNIC, Phone No");
-    private File_Handling bank_file = new File_Handling("bank_info.csv","Bank,Total Accounts,Total Clients,Total Balance");
+    private File_Handling bank_file = new File_Handling("bank_info.txt","Bank,Total Accounts,Total Clients,Total Balance");
 
     public Bank(String name) throws IOException {
         this.name = name;
@@ -16,13 +18,13 @@ class Bank {
     public Client addClient(Person p) throws IOException {
         Client c = new Client(p);
         clList.add(c);
-        cln_file.write(c.toString());
+        cln_file.write(c.toString(),true);
         return c;
     }
     public Account addAccount(String id, float amount, Client c) throws IOException {
         Account a = new Account(amount, c);
         c.addAccount(a);
-        acc_file.write(a.toString());
+        acc_file.write(a.toString(),true);
         acList.add(a);
         return a;
     }
@@ -65,9 +67,8 @@ class Bank {
         return null;
     }
     public String showInfo() throws IOException {
-        bank_file
-        String data = name+","+acList.size()+","+clList.size()+","+totalAmount();
-        bank_file.write(data);
+        String data = "Bank Name:"+name+",\nTotal Accounts: "+acList.size()+",\nTotal Clients: "+clList.size()+",\nTotal Balance: "+totalAmount();
+        bank_file.write(data,false);
         return bank_file.read();
     }
     @Override
@@ -206,7 +207,6 @@ class Client {
 
         System.out.println("Account Not Found");
     }
-
     @Override
     public String toString() {
 
@@ -247,55 +247,6 @@ class Person {
         return name+","+cnic+","+phoneNo;
     }
 }
-
-// Husnain
-class File_Handling {
-    String name;
-    String header;
-    File file;
-    File_Handling(String name,String header) throws IOException {
-        this.name = name;
-        this.header = header;
-        create_file(name);
-        createHeader(header);
-    }
-    private void create_file(String name) throws IOException {
-        file = new File(this.name);
-
-        if (file.createNewFile()) {
-            System.out.println("File Created " + file.getName());
-        } else {
-            System.out.println("File Already Created!");
-        }
-    }
-    private void createHeader(String header) throws IOException {
-        if (file.length() == 0) {
-            FileWriter writer = new FileWriter(file);
-            writer.write(header+"\n");
-            writer.close();
-        }
-    }
-    public void write(String data) throws IOException {
-        FileWriter writer = new FileWriter(file, true);
-        writer.write(data + "\n");
-        writer.close();
-    }
-    public String read() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line;
-        StringBuilder data_out = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
-            String[] data = line.split(",");
-            for (String value : data) {
-                data_out.append(value).append("\t");
-            }
-            data_out.append("\n");
-        }
-        reader.close();
-        return data_out.toString();
-    }
-}
-
 class Main {
 
     public static void main(String[] args) throws IOException {
@@ -350,3 +301,61 @@ class Main {
 //        System.out.println(bank);
     }
 }
+//-----------------------------------
+
+
+
+//----------- Husnain ---------------
+class File_Handling {
+    String name;
+    String header;
+    File file;
+    File_Handling(String name,String header) throws IOException {
+        this.name = name;
+        this.header = header;
+        create_file(name);
+        createHeader(header);
+    }
+    private void create_file(String name) throws IOException {
+        file = new File(this.name);
+
+        if (file.createNewFile()) {
+            System.out.println("File Created " + file.getName());
+        } else {
+            System.out.println("File Already Created!");
+        }
+    }
+    private void createHeader(String header) throws IOException {
+        if (file.length() == 0) {
+            FileWriter writer = new FileWriter(file);
+            writer.write(header+"\n");
+            writer.close();
+        }
+    }
+    public void write(String data,Boolean b) throws IOException {
+        FileWriter writer = new FileWriter(file, b);
+        writer.write(data + "\n");
+        writer.close();
+    }
+    public String read() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line;
+        StringBuilder data_out = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            String[] data = line.split(",");
+            for (String value : data) {
+                data_out.append(value).append("\t");
+            }
+            data_out.append("\n");
+        }
+        reader.close();
+        return data_out.toString();
+    }
+}
+//-----------------------------------
+
+
+
+//----------- Ali -------------------
+// Ali Jutt Start from Here!
+//-----------------------------------
