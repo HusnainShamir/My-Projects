@@ -1,4 +1,4 @@
-Bank Name:HBL,
-Total Accounts: 3,
-Total Clients: 2,
-Total Balance: 23000.0
+Name ; UET Bank
+Total Accs; 0
+Total Clients; 0
+Total Balance; 0.0
