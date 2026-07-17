@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Weatherly
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        🌦️ Weatherly
+    </h1>
+
+    <form method="POST">
+
+    <input
+        type="text"
+        name="city"
+        class="form-control"
+        placeholder="Enter city">
+
+    <button class="btn btn-primary mt-3">
+        Search
+    </button>
+
+</form>
+
+{% if city %}
+    <h3 class="mt-4">
+        You searched for: {{ city }}
+    </h3>
+{% endif %}
+
+</div>
+
+{% endblock %}
+
+{% if error %}
+
+<div class="alert alert-danger mt-4">
+    {{ error }}
+</div>
+
+{% endif %}
+
+
+{% if weather %}
+
+<div class="card mt-5 shadow p-4">
+
+    <h2>
+        {{ weather.city }},
+        {{ weather.country }}
+    </h2>
+
+    <hr>
+
+    <h3>
+        🌡️ {{ weather.temp }} °C
+    </h3>
+
+    <p>
+        Feels Like:
+        {{ weather.feels_like }} °C
+    </p>
+
+    <p>
+        ☁️ {{ weather.description }}
+    </p>
+
+    <p>
+        💧 Humidity:
+        {{ weather.humidity }}%
+    </p>
+
+    <p>
+        🌬️ Wind:
+        {{ weather.wind }} m/s
+    </p>
+
+</div>
+
+{% endif %}
